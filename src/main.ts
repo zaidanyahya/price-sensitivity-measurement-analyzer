@@ -2,6 +2,7 @@ import yargs from "yargs";
 import { hideBin } from "yargs/helpers";
 import { Args } from "./types/types";
 import { parseSamples } from "./samples";
+import PSMAnalyzer from "./psm-analyzer";
 
 /**
  * Main function that reads a CSV file and logs the parsed data.
@@ -25,8 +26,10 @@ const main = async (): Promise<void> => {
   try {
     // Read and parse the CSV file
     const samples = await parseSamples(csvFilePath);
-    // Log the parsed data
-    console.log(samples);
+    // Analyze the parsed data
+    const analyzer = new PSMAnalyzer();
+    const res = analyzer.analyze(samples);
+    console.log(res);
   } catch (error) {
     console.error(error);
   }

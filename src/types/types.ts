@@ -9,3 +9,12 @@ export type Sample = {
   overprice: number;
   underprice: number;
 };
+
+export type CMP = "<=" | ">=";
+
+export type ResultData = {
+  expensive: number;
+  cheap: number;
+  overprice: number;
+  underprice: number;
+};

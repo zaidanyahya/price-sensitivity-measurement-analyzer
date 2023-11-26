@@ -37,13 +37,13 @@ export const parseSamples = async (path: fs.PathLike): Promise<Samples> => {
   const samples = new Samples();
 
   // Extract keys from the samples object to map CSV headers
-  const sampleKeys = Object.keys(samples);
+  const fields = Object.keys(samples);
 
   return new Promise<Samples>((resolve, reject) => {
     fs.createReadStream(path)
       .pipe(
         csv({
-          mapHeaders: ({ index }) => sampleKeys[index],
+          mapHeaders: ({ index }) => fields[index],
           mapValues: ({ value }) => parseInt(value),
         }),
       )
