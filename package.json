@@ -4,7 +4,7 @@
   "description": "",
   "main": "src/psm.ts",
   "scripts": {
-    "start": "npx ts-node ./src/psm.ts"
+    "start": "ts-node ./psm.ts --csvfile PSMrawdata"
   },
   "keywords": [],
   "author": "Zaidan Yahya",
