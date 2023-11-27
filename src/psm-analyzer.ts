@@ -66,7 +66,7 @@ const calcPercent = (data: number[], cmp: CMP, threshold: number): number => {
 
 /**
  * Price Sensitivity Measurement Analyzer.
- * Analyzes pricing samples and provides highest, ideal, compromise, and lowest Price results.
+ * Analyzes pricing samples and provides highest, ideal, compromise, and lowest price results.
  */
 class PSMAnalyzer {
   analyze(samples: DataFrame): PSMResult {
