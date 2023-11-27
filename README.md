@@ -1,76 +1,76 @@
-# Price Sensitivity Measurement Analyzer
+# 価格感度分析(PSM分析)プログラム
 
-[![en](https://img.shields.io/badge/lang-en-blue.svg)](/README.md)
-[![pt-br](https://img.shields.io/badge/lang-jp-558539.svg)](/README.jp.md)
+[![en](https://img.shields.io/badge/lang-en-blue.svg)](/README.en.md)
+[![pt-br](https://img.shields.io/badge/lang-jp-558539.svg)](/README.md)
 
-Price Sensitivity Measurement Analyzer is an analyzer written in TypeScript that provides an easy way to calculate highest, ideal, compromise, and lowest price for a given questionnaire result.
+Price Sensitivity Measurement AnalyzerはTypeScriptで書かれたPSM分析プログラムで、与えられたアンケート結果に対する最高価格、理想価格、妥協価格、最低価格を簡単に計算する方法を提供します。
 
-## Installation
+## インストール
 
-This is a TypeScript program written in Node.js environment.
+このプログラムは Node.js 環境で書かれた TypeScript プログラムです。
 
-Before installing, download and install the latest version of Node.js.
+インストールする前に、最新安定版の Node.js をダウンロードしてインストールしてください。
 
-If you found any problem related with Node.js environment try to use Node.js version 20.9.0.
+Node.js 環境に関する問題が見つかった場合は、Node.js バージョン 20.9.0 を使用してみてください。
 
-Installation is done by cloning this repo and install all required packages.
+このプログラムのインストールは、次のコマンドでこのリポジトリをクローンし、必要なパッケージをすべてインストールすることで行います。
 
 ```bash
 git clone https://github.com/zaidanyahya/price-sensitivity-measurement-analyzer.git
 npm install
 ```
 
-After installation, if you have npx installed globally on your system you can try to run the following command to calculate PSM using the questionnaire result included in the project files.
+インストール後、npx が既にグローバルにインストールされている場合は、以下のコマンドを実行することで、プロジェクトファイルに含まれるアンケート結果を使用してPSM分析をすることができます。
 
 ```bash
 npm start
 ```
 
-## Usage
+## 使用方法
 
-First, copy or move your csv file to the project directory Then, run one of the following command.
+まず、csv ファイルをプロジェクト・ダイレクトリに移動し、ターミナル上でプロジェクト・ダイレクトリに移動します。その上で、
+次の中からどちらかを実行してください。
 
-### Using npx
+### npx を用いる方法
 
-If you have npx installed globally on your system, you can run the program by following command.
+npx が既にグローバルにインストールされている場合は、以下のコマンドでプログラムを実行することができます。
 
 ```bash
 npx ts-node psm.ts --csvfile PSMRawdata
 ```
 
-Note: Replace `PSMRawdata` with your csv filename.
+注: `PSMRawdata` は csv ファイル名に置き換えてください。
 
-### Using ts-node installed globally
+### グローバルにインストールされた ts-node を用いる方法
 
-Install ts-node globally using the following command.
-
-You can skip this if you already have ts-node installed globally on your system.
+ts-node を グローバルにインストールするためには、以下のコマンドで実行できます。
+ts-node が既に、グローバルにインストールされている場合、以下のコマンドをスキップしても大丈夫です。
 
 ```bash
 npm install -g ts-node
 ```
 
-Next, you can run the program by the following command.
+次は、以下のコマンドでプログラムを実行することができます。
 
 ```bash
 ts-node psm.ts --csvfile PSMRawdata
 ```
 
-Note: Replace `PSMRawdata` with your csv filename.
+注: `PSMRawdata` は csv ファイル名に置き換えてください。
 
-### Run manually using path
+### パスを使って手動で実行する方法
 
-Additionally, you can also run the program manually using path. After you moved your csv file to the project directory, run the following command.
+パスを使って手動でプログラムを実行することもできます。以下のコマンドで実行できます。
 
 ```bash
 .\node_modules\.bin\ts-node psm.ts --csvfile PSMrawdata
 ```
 
-Note: Replace `PSMRawdata` with your csv filename.
+注: `PSMRawdata` は csv ファイル名に置き換えてください。
 
-## Expected CSV file content format
+## 期待される CSV ファイルの内容形式
 
-This program expecting a csv file with the following content format.
+このプログラは以下の CSV ファイルの内容形式を期待します。
 
 ```
 sample number,高い,安い,高すぎる,安すぎる
@@ -85,6 +85,6 @@ sample number,高い,安い,高すぎる,安すぎる
 36,475,350,600,350
 ```
 
-## License
+## ライセンス
 
 [MIT](/LICENSE.md)
