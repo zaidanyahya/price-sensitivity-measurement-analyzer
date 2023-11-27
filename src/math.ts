@@ -1,4 +1,23 @@
-import { Line, Line2P, Point } from "./types/types";
+/**
+ * Represents a coordinate in 2D.
+ */
+export type Point = {
+  x: number;
+  y: number;
+};
+
+/**
+ * Represents a line consist by two point coordinate in 2D.
+ */
+export type Line2P = {
+  p1: Point;
+  p2: Point;
+};
+
+/**
+ * Represents a line consist by many points.
+ */
+export type Line = Point[];
 
 /**
  * Swaps the order of points in a Line2P if the x-coordinate of the first point is
@@ -7,7 +26,7 @@ import { Line, Line2P, Point } from "./types/types";
  * @returns {Line2P} The line segment with points swapped if necessary.
  */
 
-const sortPointByX = (line: Line2P): Line2P => {
+export const sortPointByX = (line: Line2P): Line2P => {
   if (line.p1.x > line.p2.x) {
     const p = line.p1;
     line.p1 = line.p2;
