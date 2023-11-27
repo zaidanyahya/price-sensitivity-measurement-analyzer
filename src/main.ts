@@ -1,8 +1,17 @@
 import yargs from "yargs";
 import { hideBin } from "yargs/helpers";
-import { Args } from "./types/types";
+import { Args, PSMResult } from "./types/types";
 import { parseSamples } from "./samples";
 import PSMAnalyzer from "./psm-analyzer";
+
+const printResult = ({ highest, compromise, ideal, lowest }: PSMResult) => {
+  const round = (n: number) => Math.round(n);
+  const ceil = (n: number) => Math.ceil(n);
+  console.log(`最高価格：${ceil(highest)}円`);
+  console.log(`妥協価格：${round(compromise)}円`);
+  console.log(`理想価格：${round(ideal)}円`);
+  console.log(`最低品質保証価格：${round(lowest)}円`);
+};
 
 /**
  * Main function that reads a CSV file and logs the parsed data.
@@ -27,9 +36,10 @@ const main = async (): Promise<void> => {
     // Read and parse the CSV file
     const samples = await parseSamples(csvFilePath);
     // Analyze the parsed data
-    const analyzer = new PSMAnalyzer();
-    const res = analyzer.analyze(samples);
-    console.log(res);
+    const psm = new PSMAnalyzer();
+    const result = psm.analyze(samples);
+    // Print PSM Result
+    printResult(result);
   } catch (error) {
     console.error(error);
   }

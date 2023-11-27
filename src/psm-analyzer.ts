@@ -1,5 +1,6 @@
+import { arrayToLine, findIntersectionBySegment } from "./math";
 import { Samples } from "./samples";
-import { CMP, ResultData } from "./types/types";
+import { CMP, PSMResult, Data } from "./types/types";
 
 /**
  * Counts the number of elements in the data array that satisfy the given comparison condition.
@@ -61,7 +62,7 @@ class AggregateResults {
    * Adds a set of result data to the aggregation.
    * @param resultData - The result data to be added.
    */
-  push({ expensive, cheap, overprice, underprice }: ResultData) {
+  push({ expensive, cheap, overprice, underprice }: Data) {
     this.expensive.push(expensive);
     this.cheap.push(cheap);
     this.overprice.push(overprice);
@@ -74,7 +75,7 @@ class AggregateResults {
  * Analyzes pricing samples and provides aggregated results.
  */
 class PSMAnalyzer {
-  analyze(samples: Samples): AggregateResults {
+  analyze(samples: Samples): PSMResult {
     const result = new AggregateResults(50, 600, 50);
 
     result.prices.forEach((price) => {
@@ -86,7 +87,19 @@ class PSMAnalyzer {
       result.push({ expensive, cheap, overprice, underprice });
     });
 
-    return result;
+    const expensive = arrayToLine(result.prices, result.expensive);
+    const cheap = arrayToLine(result.prices, result.cheap);
+    const overprice = arrayToLine(result.prices, result.overprice);
+    const underprice = arrayToLine(result.prices, result.underprice);
+
+    //Find the Highest, Ideal, Compromise, and Lowest Price based from the cumulative data
+
+    const highest = findIntersectionBySegment(overprice, cheap).x;
+    const compromise = findIntersectionBySegment(expensive, cheap).x;
+    const ideal = findIntersectionBySegment(overprice, underprice).x;
+    const lowest = findIntersectionBySegment(underprice, expensive).x;
+
+    return { highest, compromise, ideal, lowest };
   }
 }
 
