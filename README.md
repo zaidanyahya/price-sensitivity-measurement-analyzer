@@ -17,6 +17,7 @@ Node.js 環境に関する問題が見つかった場合は、Node.js バージ�
 
 ```bash
 git clone https://github.com/zaidanyahya/price-sensitivity-measurement-analyzer.git
+cd price-sensitivity-measurement-analyzer
 npm install
 ```
 

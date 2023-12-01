@@ -17,6 +17,7 @@ Installation is done by cloning this repo and install all required packages.
 
 ```bash
 git clone https://github.com/zaidanyahya/price-sensitivity-measurement-analyzer.git
+cd price-sensitivity-measurement-analyzer
 npm install
 ```
 
